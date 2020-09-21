@@ -1,0 +1,238 @@
+@import "./assets/base/variables.scss";
+@import "./assets/base/mixins.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $baseFont;
+}
+
+.comnTBpadd {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.comnLRpadd {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.PageTitle {
+  text-align: center;
+
+  h1 {
+    color: $baseColor;
+    font-size: 50px;
+    font-family: $secondaryFont;
+
+    span {
+      color: $black;
+    }
+  }
+
+  .separatorLine {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    margin: 30px 0;
+    display: inline-block;
+
+    &.redLine {
+      &::before {
+        background-color: $baseColor;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: #afafaf;
+      height: 2px;
+      width: 100%;
+      top: 47%;
+      left: 50%;
+      display: inline-block;
+      @include transform(translate(-50%, -50%));
+    }
+
+    i {
+      font-size: $font30;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform(translate(-50%, -50%));
+
+      &.whiteIcon {
+        color: $white;
+        font-size: 23px;
+      }
+
+      &.yellowIcon {
+        color: $yellow;
+      }
+
+      &.blackIcon {
+        color: $black;
+      }
+
+      &.redIcon {
+        color: $baseColor;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+
+//animation: App-logo-spin infinite 20s linear;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+// header style
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $darkBlack;
+  padding: 1em 1.4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  &.collapse {
+    position: relative;
+
+    .topNav {
+      position: absolute;
+      background: $white;
+      top: 100%;
+      right: .6rem;
+      max-width: 200px;
+      border-radius: 5px;
+      border: solid 1px #ddd;
+      display: block;
+      @include box-shadow(0px 0px 3px rgba(0, 0, 0, 0.16));
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -9px;
+        right: .5rem;
+        border-bottom: solid 10px #fff;
+        border-left: solid 10px transparent;
+        border-right: solid 10px transparent;
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -.5rem;
+        right: .5rem;
+        border-bottom: solid 10px #ddd;
+        border-left: solid 10px transparent;
+        border-right: solid 10px transparent;
+        z-index: 0;
+      }
+
+      ul {
+        padding: 0px;
+
+        li {
+          width: 100%;
+          margin: 0px;
+          border-bottom: solid 1px #ddd;
+
+          a {
+            color: $darkBlack;
+            opacity: 1;
+            width: 100%;
+
+            &.active,
+            &:hover,
+            &:focus,
+            &:active {
+              color: $baseColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .logo {
+    // color: $white;
+    // font-size: 40px;
+    // line-height: 35px;
+    margin-bottom: -5px;
+
+    img {
+      width: 3.8rem;
+    }
+  }
+
+  .toggleButton {
+    color: $white;
+    font-size: 2rem;
+    line-height: 1.1rem;
+    display: none;
+
+    @include breakpoint(small) {
+      display: block;
+    }
+  }
+
+  .topNav {
+    @include breakpoint(small) {
+      display: none;
+    }
+
+    ul {
+      li {
+        display: inline-block;
+        margin-right: .5rem;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+
+        a {
+          font-size: 1rem;
+          color: $white;
+          padding: .5rem;
+          display: inline-block;
+          text-decoration: none;
+          @include transition(all ease 0.5s);
+
+          &:hover,
+          &:focus,
+          &:active,
+          &.active {
+            @include transition(all ease 0.5s);
+            color: $yellow;
+          }
+        }
+      }
+    }
+  }
+}
